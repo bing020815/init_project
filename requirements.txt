@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+pyodbc
+pymssql
+Fastapi
+uvicorn
+python-dotenv
+requests
+psycopg2-binary
