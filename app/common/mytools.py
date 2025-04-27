@@ -142,6 +142,21 @@ def get_json_data(file_path_of_json) -> dict:
         json_data = json.load(file)
     return json_data
 
+
+def save_json_data(file_path_of_json, json_data) -> None:
+    """
+        save the json data to file_path_of_json
+        example:
+            file_path_of_json = "../raw_data/items.json",
+    """
+    file_path = file_path_of_json
+    print(f"save file to {file_path}")
+    # Write the JSON data to a file
+    with open(file_path, "w", encoding="utf-8") as file:
+        json.dump(json_data, file, ensure_ascii=False, indent=4)
+    print(f"save to {file_path} done!")
+
+
 # %%
 # tool functions
 def round_ex(num, decimal):
