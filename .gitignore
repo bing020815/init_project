@@ -1,3 +1,13 @@
+# project-specific .gitignore file
+app/data/*
+app/raw_data/
+!app/raw_data/configuration
+!app/raw_data/Patient_batch.csv
+!app/raw_data/reads_db
+!app/raw_data/qpcr_data.csv
+!app/raw_data/qpcr_standard_db.csv
+!app/raw_data/PTEN
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -10,8 +20,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-data/
-app/data/
 build/
 develop-eggs/
 dist/
