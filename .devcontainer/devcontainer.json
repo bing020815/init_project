@@ -1,0 +1,25 @@
+{
+  "name": "BioInfo Python Dev",
+  "build": {
+    "dockerfile": "Dockerfile", // 指定 Dockerfile 位置
+    "context": ".." // Docker build context
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "jupyter.jupyterServerType": "local"
+      }
+    }
+  },
+  "remoteUser": "root",
+  "postCreateCommand": "pip install --no-cache-dir ipykernel && python -m ipykernel install --user",
+  "runArgs": ["--privileged"]
+}

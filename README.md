@@ -1,13 +1,22 @@
 # Container Usage
-# Use Vscode with docker image for dev
+# Use Vscode Terminal with docker image for dev: CLI 開發者
 在docker的環境下，運行terminal \ interactive jupyter
 1. 啟動 Docker Desktop
 2. `docker build -t [image namespace] .`建置Docker映像檔案 (通常是一次性)
 3. 啟動保持容器使用狀態 
    1. `docker run -it --name [container namespace] -v $(pwd):/app [image namespace]`: 建立 container 容器, 數據持有化
+   (通常是一次性)
    2. `docker start [containerID]`: 啟動已建立 container 容器
 4. `Ctrl + Shift + P`: 輸入`>Dev Containers: Attach to Running Container`
 5. 存擋後docker虛擬端與local端會資料同步
+
+# Use Vscode Ctrl + Shift + P Cmd with docker image for dev: VScode Command Palette 開發者(推薦)
+在 Ctrl + Shift + P 的指令下，運行 Dev Containers command
+1. 啟動 Docker Desktop
+2. `Ctrl + Shift + P`: 輸入 `>Ctrl + Shift + P → Dev Containers: Open Folder in Container...`
+    1. 之後只要要進去開發: 用 `>Rebuild and Reopen in Container`
+    2. 若要停用: 用 `Dev Containers: Close Remote Connection`
+    3. 若要啟用: 用 `Dev Containers: Open Folder in Container`
 
 
 ## instruction reference for working with docker container terminal
