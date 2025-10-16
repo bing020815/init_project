@@ -60,7 +60,7 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt || true
 RUN jupyter notebook --generate-config && \
     echo "c.NotebookApp.allow_root = True" >> /root/.jupyter/jupyter_notebook_config.py && \
     echo "c.NotebookApp.token = ''" >> /root/.jupyter/jupyter_notebook_config.py
-
+RUN python -m ipykernel install --user --name py311-docker --display-name "Python 3.11 (Docker)"
 # ==========
 # 預設啟動指令
 # ==========
