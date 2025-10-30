@@ -1,19 +1,22 @@
 # project-specific .gitignore file
 app/data/*
-app/raw_data/
-!app/raw_data/configuration
+
+# 先允許 raw_data 目錄被追蹤，然後指定要忽略的內容
+app/raw_data/*
+!app/raw_data/configuration/
 !app/raw_data/Patient_batch.csv
-!app/raw_data/reads_db
 !app/raw_data/qpcr_data.csv
 !app/raw_data/qpcr_standard_db.csv
-!app/raw_data/PTEN
+!app/raw_data/metadata.xlsx
+!app/raw_data/reads_db/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-.DS_Store
-*/.DS_Store
+
+# macOS system files
+**/.DS_Store
 .env
 # C extensions
 *.so
