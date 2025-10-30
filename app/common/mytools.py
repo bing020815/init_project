@@ -110,6 +110,50 @@ def get_random_string(length):
     result_str = ''.join(random.choice(letters) for _ in range(length))
     return result_str
 
+def convert_datetime_to_date_str(series):
+    """
+        Convert datetime columns to date string format (YYYY-MM-DD)
+        Only processes datetime columns or object columns with 'timestamp' in name
+        
+        Args:
+            series: pandas Series to process
+            
+        Returns:
+            pandas Series: Original series or converted date strings
+    """
+    if (series.dtype.name.startswith('datetime') or 
+        (series.dtype == 'object' and 'timestamp' in series.name.lower())):
+        return pd.to_datetime(series).dt.strftime('%Y-%m-%d')
+    else:
+        return series
+
+def convert_cell_phone_to_str(cell_phone):
+    """
+    Convert a cell phone number to a standardized 10-digit string format.
+    This function takes a cell phone number (which may be in various formats such as 
+    int, float, or string) and converts it to a standardized 10-digit string format,
+    padding with leading zeros if necessary. If the input is invalid (NaN, empty, or None),
+    it returns a default string of 10 zeros.
+    Args:
+        cell_phone: The cell phone number to convert. Can be int, float, string, or None/NaN.
+    Returns:
+        str: A 10-digit string representation of the cell phone number. Returns '0000000000'
+             if the input is invalid, empty, or NaN.
+    Example:
+        >>> convert_cell_phone_to_str(1234567890)
+        '1234567890'
+        >>> convert_cell_phone_to_str(123456789.0)
+        '0123456789'
+        >>> convert_cell_phone_to_str(None)
+        '0000000000'
+        >>> convert_cell_phone_to_str('')
+        '0000000000'
+    """
+    if pd.notna(cell_phone) and str(cell_phone).strip() != '':
+        return str(int(float(cell_phone))).zfill(10)
+    else:
+        return '0000000000'
+
 ### File related functions
 def get_batch_df(file_name) -> pd.DataFrame:
     """
