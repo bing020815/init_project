@@ -1,5 +1,8 @@
 # Container Usage
-# Use Vscode Terminal with docker image for dev: CLI 開發者
+## Clean cache
+會徹底清掉所有 builder cache，如果 rebuild 很頻繁，每個禮拜一次清。
+`docker builder prune --all` 
+# Use Vscode Terminal with docker image for dev:
 在docker的環境下，運行terminal \ interactive jupyter
 1. 啟動 Docker Desktop
 2. `docker build -t [image namespace] .`建置Docker映像檔案 (通常是一次性)
@@ -18,31 +21,7 @@
     2. 若要停用: 用 `Dev Containers: Close Remote Connection`
     3. 若要啟用: 用 `Dev Containers: Open Folder in Container`
 
-
-## instruction reference for working with docker container terminal
-# docker (old way)
-運用Dockerfile建立鏡像和容器
-1. `docker build -t qpcr_app .`: 構建 Docker 映像 (通常是一次性)
-2. `docker run -it --name qpcr_container -v $(pwd):/app qpcr_app`:運行容器並進入交互式終端, 持有化數據
-    +	-it：啟動交互模式，允許輸入。
-    +   --name qpcr_container：將容器命名為 qpcr_container。
-    +   -v $(pwd):/app : 持有化數據
-	+	qpcr_app：指定基於上一步構建的映像。
-   1. `docker start qpcr_container`: 重啟容器
-   2. `docker exec -it qpcr_container sh`: 開啟容器並進入交互終端
-3. `exit`: 輸入指令退出
-4. `docker start -ai qpcr_container`: 重新啟動容器
-    +   start：啟動一個已停止的容器。
-	+	-a（--attach）：將容器的標準輸出（STDOUT）和標準錯誤（STDERR）重新附加到當前終端，讓您可以看到容器內的輸出。
-	+	-i（--interactive）：允許交互式輸入，讓您可以在容器內執行指令。
-	+	qpcr_container：容器的名稱或 ID。
-5. `docker start <CONTAINER_NAME or CONTAINER_ID>` 啟動停止的容器
-6. `dokcer ps -a`: 查詢所有容器清單
-7. `docker images`: 查詢所有印象檔案清單
-8. `docker stop [containerID]`: 暫停容器
-9.  `docker rm [containerID]`: 刪除容器
-
-# docker-compose (new way)
+# docker-compose 相關指令
 運用yml檔案建立鏡像和容器
 1. `docker-compose up --build` : 運行命令, 當相依設定更動時
 2. `docker-compose up -d`: 啟動容器
